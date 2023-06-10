@@ -1,0 +1,87 @@
+server:
+  port: 8089
+  error:
+    include-message: always
+
+logging:
+  level:
+    org.springframework: INFO
+    com.mkyong: DEBUG
+    jdbc: DEBUG
+
+management:
+  security:
+    enabled: false
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+    info:
+      env:
+        enabled: true
+      java:
+        enabled: true
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, metrics, info, health, beans
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+
+spring:
+  application:
+    name: servisimo-viewer
+  cloud:
+    consul:
+      enebled: true
+      host: localhost
+      port: 8500
+      discovery:
+        enebled: true
+        healthCheckPath: ${management.server.servlet.context-path}/actuator/health
+        healthCheckInterval: 15s
+        tags: env=dev
+        serviceName: dev-${spring.application.name}
+    config:
+      enabled: false
+  profiles:
+    active: dev
+  main:
+    banner-mode: log
+ # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://servisimodb.postgres.database.azure.com:5432/servisimo?user=servisimoadmin@servisimodb&password=SECRETPASSWORD
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+features:
+  canaryflag: true
+  expandedsearch: true
+
+#custom properties
+info:
+  app:
+    name: servisimo-viewer
+    description: Spring Demo application
+  author: 
+    name: "Stefan Monko"
+    mail: "stefan@stefanmonko.sk / monkos@posam.sk"
