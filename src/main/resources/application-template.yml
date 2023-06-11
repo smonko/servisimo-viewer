@@ -10,6 +10,9 @@ logging:
     jdbc: DEBUG
 
 management:
+  server:
+    servlet:
+      context-path: /actuator
   security:
     enabled: false
   endpoint:
@@ -48,7 +51,7 @@ spring:
       port: 8500
       discovery:
         enebled: true
-        healthCheckPath: ${management.server.servlet.context-path}/actuator/health
+        healthCheckPath: ${management.server.servlet.context-path}/health
         healthCheckInterval: 15s
         tags: env=dev
         serviceName: dev-${spring.application.name}
