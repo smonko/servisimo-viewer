@@ -1,4 +1,6 @@
-# Spring Boot Demo application
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/36ef77436d7841659c1637ababff1aac)](https://app.codacy.com/gh/smonko/servisimo-viewer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)  
+
+# Spring Boot Demo application  
 
 ## servisimo-viewer (Backend + API)
 
