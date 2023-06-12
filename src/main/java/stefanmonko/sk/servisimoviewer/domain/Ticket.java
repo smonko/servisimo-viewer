@@ -2,6 +2,8 @@ package stefanmonko.sk.servisimoviewer.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +25,10 @@ public class Ticket {
 
     private String reporter;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deadline;
 
     private String description;
